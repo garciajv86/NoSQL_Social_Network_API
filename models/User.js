@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+
 //* userSchema blueprint
 const userSchema = new Schema(
   {

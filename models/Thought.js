@@ -1,4 +1,6 @@
 const { Schema, model } = require("mongoose");
+//? Need to import the reactionSchema to use ?//
+const reactionSchema = require('./Reaction');
 
 //* Thought Schema blueprint
 const thoughtSchema = new Schema({

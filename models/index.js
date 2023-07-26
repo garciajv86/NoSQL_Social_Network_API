@@ -1,5 +1,6 @@
 const User = require("./User");
 const Thought = require("./Thought");
-const Reaction = require("./Reaction");
+//? How should I import reaction schema and do I need to here ?//
+const reactionSchema = require("./Reaction");
 
-module.exports = { User, Thought, Reaction };
+module.exports = { User, Thought, reactionSchema };

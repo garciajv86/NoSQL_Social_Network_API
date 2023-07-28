@@ -3,8 +3,8 @@ const { Schema } = require("mongoose");
 //* Reaction Schema blueprint(Schema Only)
 const reactionSchema = new Schema({
   reactionId: {
-    //? Use Monggoose's ObjectId data type ?//
-    //? Default value is set to a new ObjectId ?//
+    type: Schema.Types.ObjectId,
+    default: () => new Types.ObjectId(),
   },
   reactionBody: {
     type: String,
@@ -27,5 +27,4 @@ reactionSchema.virtual("formattedCreatedAt").get(function () {
   return this.createdAt.toLocaleString(); //? Do I use a different date formatting method here //?
 });
 
-//? How should I export the reactionSchema ?//
 module.exports = reactionSchema;

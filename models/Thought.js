@@ -1,6 +1,5 @@
 const { Schema, model } = require("mongoose");
-//? Need to import the reactionSchema to use ?//
-const reactionSchema = require('./Reaction');
+const reactionSchema = require("./Reaction");
 
 //* Thought Schema blueprint
 const thoughtSchema = new Schema({
@@ -20,8 +19,7 @@ const thoughtSchema = new Schema({
     required: true,
   },
   //* These reactions are like replies
-  //? How would I create this array of nested documents created with the reactionSchema //?
-  reactions: [],
+  reactions: [reactionSchema],
 });
 
 //* Getter method to format the timestamp on query

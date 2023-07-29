@@ -1,4 +1,4 @@
-const { Schema } = require("mongoose");
+const { Schema, Types } = require("mongoose");
 
 //* Reaction Schema blueprint(Schema Only)
 const reactionSchema = new Schema({

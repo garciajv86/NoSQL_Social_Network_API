@@ -11,7 +11,7 @@ module.exports = {
   //* Get all thoughts
   async getThoughts(req, res) {
     try {
-      const thoughts = await Thought.find().populate('reactions');
+      const thoughts = await Thought.find().populate("reactions");
 
       const thoughtObj = {
         thoughts,
@@ -147,7 +147,7 @@ module.exports = {
       thought.reactions.splice(reactionIndex, 1);
       await thought.save();
 
-      res.json({ message: "Thought successfully deleted!", thought });
+      res.json({ message: "Reaction successfully deleted!", thought });
     } catch (err) {
       res.status(500).json(err);
     }

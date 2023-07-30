@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
 const reactionSchema = require("./Reaction");
+const formatDate = require("./utils/dateFormat.js");
 
 //* Thought Schema blueprint
 const thoughtSchema = new Schema({
@@ -24,8 +25,7 @@ const thoughtSchema = new Schema({
 
 //* Getter method to format the timestamp on query
 thoughtSchema.virtual("formattedCreatedAt").get(function () {
-  //? Do I format the timestamp to a string //?
-  return this.createdAt.toLocaleString(); //? Do I use a different date formatting method here //?
+  return formatDate(this.createdAt);
 });
 
 //* Virtual that retrieves the length of the thought's reaction array field on query.

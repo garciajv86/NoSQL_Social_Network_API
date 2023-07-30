@@ -21,7 +21,8 @@ This project is a social network api using mongoose, mongodb, and express that a
 
 Below are links to the walk-thru video of the app and the repo:<br>
 [Walk_Thru_Video](https://drive.google.com/file/d/1i9zvDTln4f_nsd15pYJJvn5Nm-nrLplY/view)<br>
-[Projects_Repo](https://github.com/garciajv86/NoSQL_Social_Network_API)
+[Projects_Repo](https://github.com/garciajv86/NoSQL_Social_Network_API)<br>
+[Heroku_Deployed_App](https://social-network--api-3ecd2fb1697d.herokuapp.com/)
 
 ## ScreenShot
 Insomnia Screenshots:

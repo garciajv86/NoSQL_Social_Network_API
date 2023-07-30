@@ -20,7 +20,7 @@ This project is a social network api using mongoose, mongodb, and express that a
 ## Link
 
 Below are links to the walk-thru video of the app and the repo:<br>
-[Walk_Thru_Video]()<br>
+[Walk_Thru_Video](https://drive.google.com/file/d/1i9zvDTln4f_nsd15pYJJvn5Nm-nrLplY/view)<br>
 [Projects_Repo](https://github.com/garciajv86/NoSQL_Social_Network_API)
 
 ## ScreenShot

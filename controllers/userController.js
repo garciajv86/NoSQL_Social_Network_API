@@ -1,21 +1,24 @@
 const { User } = require("../models");
 
 module.exports = {
-  //* Get all courses
+  //* Get all users
   async getUsers(req, res) {
     try {
-      const users = await User.find().populate("thoughts");
-      res.json(users);
+      const dbUserData = await User.find().populate("thoughts"); //* Populate the 'thoughts' field in the User model
+
+      res.json(dbUserData);
     } catch (err) {
+      console.log(err);
       res.status(500).json(err);
     }
   },
+
   //* Get a user
   async getSingleUser(req, res) {
     try {
       const user = await User.findOne({ _id: req.params.userId })
         .populate("thoughts")
-        .select("-__v");
+        .populate("friends");
 
       if (!user) {
         return res.status(404).json({ message: "No user with that ID" });
@@ -26,6 +29,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+
   //* Create a user
   async createUser(req, res) {
     try {
@@ -36,6 +40,7 @@ module.exports = {
       return res.status(500).json(err);
     }
   },
+
   //* Delete a user
   async deleteUser(req, res) {
     try {
@@ -51,6 +56,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+
   //* Update a user
   async updateUser(req, res) {
     try {
@@ -69,6 +75,8 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+
+  //* Add a friend
   async addFriend(req, res) {
     try {
       const userId = req.params.userId;
@@ -113,6 +121,8 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+
+  //* Remove a friend
   async removeFriend(req, res) {
     try {
       const userId = req.params.userId;

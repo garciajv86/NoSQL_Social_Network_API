@@ -1,11 +1,4 @@
-const { ObjectId } = require("mongoose").Types;
-const { Thought, Reaction } = require("../models");
-
-//* Aggregate function to get the number of thoughts overall
-const thoughtCount = async () => {
-  const numberOfThoughts = await Thought.aggregate().count("thoughtCount");
-  return numberOfThoughts;
-};
+const { Thought, Reaction, User } = require("../models");
 
 module.exports = {
   //* Get all thoughts
@@ -13,12 +6,7 @@ module.exports = {
     try {
       const thoughts = await Thought.find().populate("reactions");
 
-      const thoughtObj = {
-        thoughts,
-        thoughtCount: await thoughtCount(),
-      };
-
-      res.json(thoughtObj);
+      res.json(thoughts);
     } catch (err) {
       console.log(err);
       return res.status(500).json(err);
@@ -48,9 +36,23 @@ module.exports = {
   //* create a new thought
   async createThought(req, res) {
     try {
-      const thought = await Thought.create(req.body);
-      res.json(thought);
+      const dbThoughtData = await Thought.create(req.body);
+
+      const dbUserData = await User.findOneAndUpdate(
+        { _id: req.body.userId },
+        { $push: { thoughts: dbThoughtData._id } },
+        { new: true }
+      );
+
+      if (!dbUserData) {
+        return res
+          .status(404)
+          .json({ message: "Thought created but no user with this id!" });
+      }
+
+      res.json({ message: "Thought successfully created!" });
     } catch (err) {
+      console.log(err);
       res.status(500).json(err);
     }
   },
